@@ -1,0 +1,14 @@
+<div class="container my-4">
+    <div class="p-4 border rounded shadow bg-light mx-auto" style="max-width: 600px;">
+      <h4 class="mb-3 text-center">Customer Details</h4>
+  
+      <p><strong>Name:</strong> {{ data.customer.firstName }} {{ data.customer.lastName }}</p>
+      <p><strong>Phone Number:</strong> {{ data.customer.phoneNumber }}</p>
+  
+      <div class="d-flex justify-content-between mt-4">
+        <button class="btn btn-danger" (click)="onDelete()">Delete</button>
+        <button class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+      </div>
+    </div>
+  </div>
+  

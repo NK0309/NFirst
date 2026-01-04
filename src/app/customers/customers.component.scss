@@ -1,0 +1,11 @@
+// .container {
+//   overflow-x: auto;
+// }
+.col-width {
+  width: 150px;  // Apply to each column header and data cell
+}
+.ellipsis-text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

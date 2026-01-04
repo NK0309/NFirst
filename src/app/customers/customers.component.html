@@ -1,0 +1,73 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h1>Welcome to the Customers Page</h1>
+    <button class="btn btn-danger" (click)="onLogout()">Logout</button>
+  </div>
+
+  <div class="d-flex flex-wrap justify-content-between align-items-center mb-2 gap-2">
+  <div>
+    <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchTerm" (input)="onSearch()"/>
+  </div>
+
+  <div class="d-flex flex-wrap gap-2">
+    <button class="btn btn-primary" (click)="onAdd()">Add</button>
+    <button class="btn btn-success" (click)="onRefresh()">Refresh</button>
+  </div>
+</div>
+
+
+  <div class="container mt-4">
+    <h4>Customer Details</h4>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped" *ngIf="responseData.length > 0; else noData"
+        style="table-layout: fixed;">
+        <thead class="table-dark">
+          <tr>
+            <th class="col-width">FirstName</th>
+            <th class="col-width">LastName</th>
+            <th class="col-width">PhoneNumber</th>
+            <th class="col-width">Age</th>
+            <th class="col-width">Country</th>
+            <th class="col-width">State</th>
+            <th class="col-width">City</th>
+            <th class="col-width">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of responseData">
+            <td class="ellipsis-text" [attr.title]="item.firstName">
+              {{ item.firstName }}
+            </td>
+            <td class="ellipsis-text" [attr.title]="item.lastName">
+              {{ item.lastName }}
+            </td>
+            <td [attr.title]="item.phoneNumber" class="ellipsis-text">
+              {{ item.phoneNumber }}
+            </td>
+            <td [attr.title]="item.age" class="ellipsis-text">
+              {{ item.age }}
+            </td>
+            <td [attr.title]="item.country" class="ellipsis-text">
+              {{ item.country }}
+            </td>
+            <td [attr.title]="item.state" class="ellipsis-text">
+              {{ item.state }}
+            </td>
+            <td [attr.title]="item.city" class="ellipsis-text">
+              {{ item.city }}
+            </td>
+            <td>
+              <button class="btn btn-sm btn-primary me-2" (click)="onEdit(item)">Edit</button>
+              <button class="btn btn-sm btn-danger" (click)="onDelete(item)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <ng-template #noData>
+      <div class="alert alert-info">No Customers found.</div>
+    </ng-template>
+  </div>
+</div>

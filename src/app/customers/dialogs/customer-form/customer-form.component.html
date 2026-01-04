@@ -1,0 +1,63 @@
+<div class="container my-4">
+  <h3 class="mb-4 text-center">{{ isEditMode ? 'Edit Customer' : 'Add Customer' }}</h3>
+
+  <div class="p-4 border rounded shadow bg-light mx-auto" style="max-width: 800px;">
+    <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="firstName" class="form-label">First Name<span class="text-danger">*</span></label>
+          <input id="firstName" class="form-control" formControlName="firstName" placeholder="Enter first name" />
+          <div *ngIf="customerForm.get('firstName')?.invalid && customerForm.get('firstName')?.touched" class="text-danger">
+            First name is required.
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="lastName" class="form-label">Last Name<span class="text-danger">*</span></label>
+          <input id="lastName" class="form-control" formControlName="lastName" placeholder="Enter last name" />
+          <div *ngIf="customerForm.get('lastName')?.invalid && customerForm.get('lastName')?.touched" class="text-danger">
+            Last name is required.
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="phoneNumber" class="form-label">Phone Number<span class="text-danger">*</span></label>
+          <input id="phoneNumber" class="form-control" formControlName="phoneNumber" placeholder="Enter phone number" />
+          <div *ngIf="customerForm.get('phoneNumber')?.invalid && customerForm.get('phoneNumber')?.touched" class="text-danger">
+            Phone number must be 10 digits.
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="age" class="form-label">Age<span class="text-danger">*</span></label>
+          <input id="age" class="form-control" formControlName="age" type="number" placeholder="Enter age" />
+          <div *ngIf="customerForm.get('phoneNumber')?.invalid && customerForm.get('phoneNumber')?.touched" class="text-danger">
+            Age is required.
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="country" class="form-label">Country</label>
+          <input id="country" class="form-control" formControlName="country" placeholder="Enter country" />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="state" class="form-label">State</label>
+          <input id="state" class="form-control" formControlName="state" placeholder="Enter state" />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="city" class="form-label">City</label>
+          <input id="city" class="form-control" formControlName="city" placeholder="Enter city" />
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between mt-3">
+        <button type="submit" class="btn btn-primary" [disabled]="customerForm.invalid">
+          {{ isEditMode ? 'Update' : 'Create' }}
+        </button>
+        <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
